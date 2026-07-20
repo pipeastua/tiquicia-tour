@@ -1,0 +1,182 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+button, a {
+    font: inherit;
+}
+
+/* ===== Layout de dos columnas ===== */
+.login-layout {
+    display: flex;
+    height: 100vh;
+    min-height: 640px;
+}
+
+.login-form-side {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: var(--sand);
+}
+
+.login-form-inner {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 36px 32px;
+}
+
+.login-form-inner h1 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--jungle);
+    margin-bottom: 24px;
+}
+
+/* ===== Campos del formulario ===== */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--jungle-dark);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--sand-dark);
+    color: var(--text);
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--forest);
+}
+
+/* ===== Campo de contraseña con icono ===== */
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 42px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.cross-icon {
+    display: none;
+}
+
+/* ===== Botón principal ===== */
+button[type="submit"] {
+    width: 100%;
+    margin-top: 6px;
+    padding: 14px 18px;
+    border: none;
+    border-radius: var(--radius);
+    background: var(--forest);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+}
+
+button[type="submit"]:hover {
+    background: var(--jungle);
+    transform: translateY(-1px);
+}
+
+/* ===== Mensajes ===== */
+.error {
+    display: block;
+    margin-top: 6px;
+    font-size: 12.5px;
+    color: #b22222;
+}
+
+.exito {
+    background: rgba(157, 196, 174, 0.25);
+    color: var(--forest);
+    border: 1px solid rgba(157, 196, 174, 0.5);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.switch-link {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--sage-dark);
+    text-align: center;
+}
+
+.switch-link a {
+    color: var(--forest);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.switch-link a:hover {
+    color: var(--jungle);
+    text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+    .login-form-side {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow: auto;
+    }
+
+    .login-layout {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .login-form-side {
+        width: 100%;
+        min-height: 100vh;
+    }
+}

@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --jungle: #163d27;
+    --jungle-dark: #0d2a1a;
+    --forest: #2a6a43;
+    --amber: #c8831a;
+    --amber-light: #f5c77e;
+    --sage: #9dc4ae;
+    --sage-dark: #6b8f74;
+    --sand: #f2efe6;
+    --sand-dark: #ede8df;
+    --card: #ffffff;
+    --text: #163d27;
+    --border: rgba(22, 61, 39, 0.1);
+    --radius-sm: 8px;
+    --radius: 12px;
+    --radius-lg: 18px;
+    --shadow-sm: 0 1px 4px rgba(22, 61, 39, 0.07);
+    --shadow: 0 4px 16px rgba(22, 61, 39, 0.1);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+html,
+body {
+    min-height: 100%;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--text);
+    background: var(--sand);
+    -webkit-font-smoothing: antialiased;
+}
+
+button, a {
+    font: inherit;
+}

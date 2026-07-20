@@ -1,0 +1,60 @@
+/* ===== Panel del swiper ===== */
+.login-swiper-side {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-swiper-side .swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.login-swiper-side .swiper-slide {
+    position: relative;
+}
+
+.login-swiper-side .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.login-swiper-side .swiper-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(13, 42, 26, 0.85) 0%,
+        rgba(13, 42, 26, 0.15) 45%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+/* ===== Paginación (bullets) ===== */
+.login-swiper-side .swiper-pagination {
+    bottom: 24px !important;
+}
+
+.login-swiper-side .swiper-pagination-bullet {
+    width: 9px;
+    height: 9px;
+    background: #fff;
+    opacity: 0.5;
+    transition: opacity 0.2s, background 0.2s;
+}
+
+.login-swiper-side .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: var(--amber);
+}
+
+/* ===== Responsive: se oculta igual que el sidebar de dashboard ===== */
+@media (max-width: 768px) {
+    .login-swiper-side {
+        display: none;
+    }
+}
