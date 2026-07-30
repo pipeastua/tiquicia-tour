@@ -1,48 +1,3 @@
-<?php
-session_start();
-
-$errors = [];
-$email = '';
-$toast_messages = [];
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
-
-    if (empty($email)) {
-        $errors['email'] = 'El correo electrónico es obligatorio.';
-    }
-
-    if (empty($password)) {
-        $errors['password'] = 'La contraseña es obligatoria.';
-    }
-
-    if (empty($errors)) {
-        if (isset($_SESSION['user']) && $_SESSION['user']['email'] === $email && password_verify($password, $_SESSION['user']['password_hash'])) {
-            $_SESSION['logged_in'] = true;
-            header('Location: /dashboard');
-            exit;
-        } else {
-            $errors['general'] = 'Correo electrónico o contraseña incorrectos.';
-        }
-    }
-}
-
-if (isset($_GET['registered'])) {
-    $toast_messages[] = [
-        'type' => 'success',
-        'message' => 'Cuenta creada correctamente. Ahora puedes iniciar sesión.'
-    ];
-}
-
-if (isset($errors['general'])) {
-    $toast_messages[] = [
-        'type' => 'error',
-        'message' => $errors['general']
-    ];
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -59,8 +14,10 @@ if (isset($errors['general'])) {
 
 <body>
 
-    <?php require __DIR__ . '/../layouts/password_field.php'; ?>
-    <?php require __DIR__ . '/../layouts/swiper.php'; ?>
+    <?php $errors = $errors ?? []; ?>
+    <?php require __DIR__ . '/../../layouts/password_field.php'; ?>
+    <?php require __DIR__ . '/../../layouts/swiper.php'; ?>
+    <?php include __DIR__ . '/../../layouts/flash_message.php'; ?>
 
     <div class="login-layout">
 
@@ -72,13 +29,15 @@ if (isset($errors['general'])) {
 
                 <form action="/" method="POST" novalidate>
 
+                    <input type="hidden" name="csrf_token" value="<?= Security::generateCSRFToken() ?>">
+
                     <div class="form-group">
                         <label for="email">Correo electrónico</label>
                         <input
                             type="email"
                             id="email"
                             name="email"
-                            value="<?= htmlspecialchars($email) ?>">
+                            value="<?= htmlspecialchars($email ?? '') ?>">
 
                         <?php if (isset($errors['email'])): ?>
                             <span class="error"><?= $errors['email'] ?></span>
@@ -112,7 +71,6 @@ if (isset($errors['general'])) {
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script>
     <script src="/assets/js/swiper.js"></script>
-    <?php include __DIR__ . '/../layouts/windowFlashMessage.php'; ?>
     <script src="/assets/js/flashMessage.js"></script>
 
 </body>

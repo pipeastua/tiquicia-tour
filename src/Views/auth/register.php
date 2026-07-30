@@ -1,58 +1,3 @@
-<?php
-session_start();
-
-$errors = [];
-$data = [
-    'name' => '',
-    'email' => '',
-];
-$toast_messages = [];
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data['name'] = trim($_POST['name'] ?? '');
-    $data['email'] = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
-    $confirm_password = $_POST['confirm_password'] ?? '';
-
-    if (empty($data['name'])) {
-        $errors['name'] = 'El nombre es obligatorio.';
-    }
-
-    if (empty($data['email'])) {
-        $errors['email'] = 'El correo electrónico es obligatorio.';
-    } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] = 'El correo electrónico no es válido.';
-    }
-
-    if (empty($password)) {
-        $errors['password'] = 'La contraseña es obligatoria.';
-    } elseif (strlen($password) < 8) {
-        $errors['password'] = 'La contraseña debe tener al menos 8 caracteres.';
-    }
-
-    if ($password !== $confirm_password) {
-        $errors['confirm_password'] = 'Las contraseñas no coinciden.';
-    }
-
-    if (!empty($errors)) {
-        $toast_messages[] = [
-            'type' => 'error',
-            'message' => 'Por favor, corrige los errores en el formulario.'
-        ];
-    }
-
-    if (empty($errors)) {
-        $_SESSION['user'] = [
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password_hash' => password_hash($password, PASSWORD_DEFAULT)
-        ];
-        header('Location: /?registered=1');
-        exit;
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -68,9 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <?php
+    // Ensure $errors is defined to avoid undefined variable notices
+    $errors = $errors ?? [];
 
-    <?php require __DIR__ . '/../layouts/password_field.php'; ?>
-    <?php require __DIR__ . '/../layouts/swiper.php'; ?>
+    require __DIR__ . '/../../layouts/password_field.php'; ?>
+    <?php require __DIR__ . '/../../layouts/swiper.php'; ?>
+    <?php include __DIR__ . '/../../layouts/flash_message.php'; ?>
 
     <div class="register-layout">
 
@@ -86,13 +35,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <form action="/register" method="POST" novalidate>
 
+                    <input type="hidden" name="csrf_token" value="<?= Security::generateCSRFToken() ?>">
+
                     <div>
                         <label for="name">Nombre:</label>
                         <input
                             type="text"
                             id="name"
                             name="name"
-                            value="<?= htmlspecialchars($data['name']) ?>">
+                            value="<?= htmlspecialchars($data['name'] ?? '') ?>">
 
                         <?php if (isset($errors['name'])): ?>
                             <span class="error"><?= $errors['name'] ?></span>
@@ -105,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             type="email"
                             id="email"
                             name="email"
-                            value="<?= htmlspecialchars($data['email']) ?>">
+                            value="<?= htmlspecialchars($data['email'] ?? '') ?>">
 
                         <?php if (isset($errors['email'])): ?>
                             <span class="error"><?= $errors['email'] ?></span>
@@ -140,7 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script>
     <script src="/assets/js/swiper.js"></script>
-    <?php include __DIR__ . '/../layouts/windowFlashMessage.php'; ?>
     <script src="/assets/js/flashMessage.js"></script>
 
 </body>

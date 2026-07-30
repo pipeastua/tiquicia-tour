@@ -11,7 +11,7 @@
 
     <!-- Footer del sidebar -->
     <div class="sidebar-footer">
-        <a href="#" class="N/A">Cerrar sesión</a>
+        <a href="/logout">Cerrar sesión</a>
     </div>
 
 </body>

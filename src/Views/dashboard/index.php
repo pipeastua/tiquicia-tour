@@ -11,7 +11,7 @@
 
 <body>
 
-    <?php include __DIR__ . '/../layouts/sidebar.php'; ?>
+    <?php include __DIR__ . '/../../layouts/sidebar.php'; ?>
 
     <main class="main-content">
         <header class="topbar">
@@ -21,8 +21,8 @@
             </div>
 
             <div class="user-box">
-                <span>N/A</span>
-                <div class="avatar">N/A</div>
+                <span><?= htmlspecialchars($_SESSION['user_name'] ?? '') ?></span>
+                <div class="avatar"><?= htmlspecialchars(strtoupper(substr($_SESSION['user_name'] ?? '', 0, 1))) ?></div>
             </div>
         </header>
 

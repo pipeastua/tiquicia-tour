@@ -4,6 +4,11 @@ class DashboardController
 {
     public function index()
     {
-        include __DIR__ . '/../pages/index.php';
+        if (empty($_SESSION['user_id'])) {
+            header('Location: /');
+            exit;
+        }
+
+        include __DIR__ . '/../Views/dashboard/index.php';
     }
 }
