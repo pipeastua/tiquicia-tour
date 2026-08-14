@@ -77,10 +77,10 @@
 
         <?php
         swiper([
-            '/assets/imgs/birger-strahl-H4Mqn6uh8bo-unsplash.jpg',
-            '/assets/imgs/sterling-lanier-WDBqiHt3tNo-unsplash.jpg',
-            '/assets/imgs/zdenek-machacek-46tBp3bP8LQ-unsplash.jpg',
-            '/assets/imgs/david-regueira-iZ0FVcET6-I-unsplash.jpg',
+            '/assets/images/main/birger-strahl-H4Mqn6uh8bo-unsplash.jpg',
+            '/assets/images/main/sterling-lanier-WDBqiHt3tNo-unsplash.jpg',
+            '/assets/images/main/zdenek-machacek-46tBp3bP8LQ-unsplash.jpg',
+            '/assets/images/main/david-regueira-iZ0FVcET6-I-unsplash.jpg',
         ]);
         ?>
 

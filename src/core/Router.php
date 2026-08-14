@@ -43,6 +43,42 @@ class Router
                 $controller->logOut();
                 break;
 
+            case '/destination':
+                require_once __DIR__ . '/../controllers/DestinationController.php';
+                $controller = new DestinationController();
+                $controller->index();
+                break;
+
+            case '/destination/view':
+                require_once __DIR__ . '/../controllers/DestinationController.php';
+                $controller = new DestinationController();
+                $controller->show();
+                break;
+
+            case '/destination/create':
+                require_once __DIR__ . '/../controllers/DestinationController.php';
+                $controller = new DestinationController();
+                $controller->create();
+                break;
+
+            case '/destination/edit':
+                require_once __DIR__ . '/../controllers/DestinationController.php';
+                $controller = new DestinationController();
+                $controller->edit();
+                break;
+
+            case '/destination/delete':
+                require_once __DIR__ . '/../controllers/DestinationController.php';
+                $controller = new DestinationController();
+                $controller->delete();
+                break;
+
+            case '/hotel':
+                require_once __DIR__ . '/../controllers/HotelController.php';
+                $controller = new HotelController();
+                $controller->index();
+                break;
+
             default:
                 http_response_code(404);
                 echo "Página no encontrada";

@@ -57,10 +57,10 @@
 
         <?php
         swiper([
-            '/assets/imgs/etienne-delorieux-EZCIoSIzGDU-unsplash.jpg',
-            '/assets/imgs/luis-diego-aguilar-H4uBNJ93j10-unsplash.jpg',
-            '/assets/imgs/patricia-palacin-EitAJO7TDLk-unsplash.jpg',
-            '/assets/imgs/trail-ee8huBv8Vlw-unsplash.jpg',
+            '/assets/images/main/etienne-delorieux-EZCIoSIzGDU-unsplash.jpg',
+            '/assets/images/main/luis-diego-aguilar-H4uBNJ93j10-unsplash.jpg',
+            '/assets/images/main/patricia-palacin-EitAJO7TDLk-unsplash.jpg',
+            '/assets/images/main/trail-ee8huBv8Vlw-unsplash.jpg',
         ]);
         ?>
 

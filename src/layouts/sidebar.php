@@ -1,40 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+$currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+$isDestination = $currentPath === '/destination' || strpos($currentPath, '/destination/') === 0;
+$isHotel = $currentPath === '/hotel';
+?>
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-icon" aria-hidden="true">TT</span>
+            <div><h2>Tiquicia Tour</h2></div>
+        </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar</title>
-</head>
+        <nav class="menu" aria-label="Navegación principal">
+            <a href="/dashboard"<?= $currentPath === '/dashboard' ? ' class="active"' : '' ?>>Inicio</a>
+            <a href="/destination"<?= $isDestination ? ' class="active"' : '' ?>>Destinos</a>
+            <a href="/hotel"<?= $isHotel ? ' class="active"' : '' ?>>Hoteles</a>
+            <a href="#">Actividades</a>
+            <a href="#">Reservas</a>
+            <a href="#">Usuario</a>
+        </nav>
 
-<body>
-
-    <!-- Barra lateral del dashboard -->
-    <div class="dashboard-container">
-        <aside class="sidebar">
-            <div class="brand">
-                <span class="brand-icon">N/A</span>
-                <div>
-                    <h2>Tiquicia Tour</h2>
-                </div>
-            </div>
-
-            <!-- Se manejan href's para un orden y futuras actualizaciones -->
-
-            <!-- Menú de navegación del dashboard -->
-            <nav class="menu">
-                <a href="#" class="N/A">Inicio</a>
-                <a href="#" class="N/A">Destinos</a>
-                <a href="#" class="N/A">Hoteles</a>
-                <a href="#" class="N/A">Actividades</a>
-                <a href="#" class="N/A">Reservas</a>
-                <a href="#" class="N/A">Usuario</a>
-            </nav>
-
-            <?php include __DIR__ . '/../layouts/footer.php'; ?>
-
-        </aside>
-
-</body>
-
-</html>
+        <div class="sidebar-footer">
+            <a href="/logout">Cerrar sesión</a>
+        </div>
+    </aside>
