@@ -64,6 +64,7 @@
             </form>
         </section>
     </main>
+    </div><!-- .dashboard-container -->
 
     <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script>
     <script src="/assets/js/flashMessage.js"></script>

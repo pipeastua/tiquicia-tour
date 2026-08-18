@@ -29,7 +29,7 @@ CREATE TABLE destinos (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP NULL
-)
+);
 
 -- 2. hoteles (depende de destinos)
 
@@ -39,6 +39,7 @@ CREATE TABLE hoteles (
     nombre VARCHAR(150) NOT NULL,
     direccion VARCHAR(255),
     calificacion DECIMAL(2,1) DEFAULT 0.0,
+    precio_noche DECIMAL(10,2) NOT NULL DEFAULT 0.00,
     activo BOOLEAN NOT NULL DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -46,7 +47,7 @@ CREATE TABLE hoteles (
     CONSTRAINT fk_hoteles_destino
         FOREIGN KEY (destino_id) REFERENCES destinos(id)
         ON DELETE RESTRICT ON UPDATE CASCADE
-)
+);
 
 -- 3. actividades (depende de destinos, no de hoteles)
 
@@ -63,7 +64,7 @@ CREATE TABLE actividades (
     CONSTRAINT fk_actividades_destino
         FOREIGN KEY (destino_id) REFERENCES destinos(id)
         ON DELETE RESTRICT ON UPDATE CASCADE
-)
+);
 
 -- 4. hotel_actividad (pivote N:M entre hoteles y actividades)
 
@@ -77,7 +78,7 @@ CREATE TABLE hotel_actividad (
     CONSTRAINT fk_ha_actividad
         FOREIGN KEY (actividad_id) REFERENCES actividades(id)
         ON DELETE CASCADE ON UPDATE CASCADE
-)
+);
 
 -- 5. reservas (cabecera, depende de usuarios)
 
@@ -92,7 +93,7 @@ CREATE TABLE reservas (
     CONSTRAINT fk_reservas_usuario
         FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
         ON DELETE RESTRICT ON UPDATE CASCADE
-)
+);
 
 -- 6. reserva_hospedajes (detalle de reserva de hotel)
 
@@ -111,7 +112,7 @@ CREATE TABLE reserva_hospedajes (
     CONSTRAINT fk_rh_hotel
         FOREIGN KEY (hotel_id) REFERENCES hoteles(id)
         ON DELETE RESTRICT ON UPDATE CASCADE
-)
+);
 
 -- 7. reserva_actividades (detalle de reserva de actividad)
 
@@ -129,6 +130,4 @@ CREATE TABLE reserva_actividades (
     CONSTRAINT fk_ra_actividad
         FOREIGN KEY (actividad_id) REFERENCES actividades(id)
         ON DELETE RESTRICT ON UPDATE CASCADE
-)
-
-ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

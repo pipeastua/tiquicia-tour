@@ -1,14 +1,15 @@
-document.addEventListener('DOMContentLoaded', function() {
-            new Swiper('.swiper', {
-                loop: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                speed: 800,
-            });
-        });
+// Configuración común del carrusel de las pantallas de autenticación.
+document.addEventListener('DOMContentLoaded', () => {
+    new Swiper('.swiper', {
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        speed: 800,
+    });
+});

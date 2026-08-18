@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../core/Security.php';
-require_once __DIR__ . '/../Models/Users.php';
+require_once __DIR__ . '/../Models/User.php';
 
 class RegisterController
 {

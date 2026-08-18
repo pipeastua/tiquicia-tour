@@ -1,0 +1,259 @@
+.booking-page {
+    padding: 28px 32px 36px;
+    display: grid;
+    gap: 20px;
+}
+.back-link {
+    color: var(--forest);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.hotel-detail {
+    display: grid;
+    grid-template-columns: minmax(260px, .9fr) 1.1fr;
+    overflow: hidden;
+}
+.hotel-detail > img {
+    width: 100%;
+    min-height: 330px;
+    height: 100%;
+    object-fit: cover;
+    background: var(--sand-dark);
+}
+.hotel-detail > div {
+    padding: 32px;
+    display: grid;
+    align-content: center;
+    gap: 12px;
+}
+.hotel-detail h1, .section-pad h2, .reservation-form h1, .reservation-card h2, .profile-wrap h2 {
+    font-family: var(--font-display);
+}
+.hotel-detail h1 {
+    font-size: clamp(27px, 4vw, 38px);
+}
+.rating {
+    color: var(--amber);
+    font-weight: 700;
+}
+.large-price {
+    font-size: 22px;
+    color: var(--jungle);
+}
+.large-price small {
+    font-size: 14px;
+    font-weight: 500;
+}
+.hotel-detail .btn-primary {
+    width: fit-content;
+    margin-top: 8px;
+}
+.section-pad, .activity-list {
+    margin: 28px 32px 36px;
+    padding: 32px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--sage) var(--sand);
+}
+.activity-list::-webkit-scrollbar {
+    width: 8px;
+}
+.activity-list::-webkit-scrollbar-track {
+    background: var(--sand);
+}
+.activity-list::-webkit-scrollbar-thumb {
+    background: var(--sage);
+    border-radius: 4px;
+}
+.activity-list::-webkit-scrollbar-thumb:hover {
+    background: var(--forest);
+}
+.booking-page .section-pad {
+    margin: 0;
+}
+.price {
+    color: var(--forest);
+    font-weight: 700;
+}
+.booking-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(240px, .7fr);
+    gap: 20px;
+    align-items: start;
+}
+.reservation-form, .booking-summary, .profile-wrap {
+    padding: 28px;
+}
+.reservation-form {
+    display: grid;
+    gap: 18px;
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+.reservation-form fieldset {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    display: grid;
+    gap: 10px;
+}
+.reservation-form legend {
+    padding: 0 6px;
+    font-weight: 700;
+}
+.reservation-form legend small {
+    color: var(--sage-dark);
+    font-weight: 400;
+}
+.activity-choice {
+    display: grid;
+    grid-template-columns: auto 1fr 150px;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    background: var(--sand);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+.activity-choice span {
+    display: grid;
+    gap: 3px;
+}
+.activity-choice small {
+    color: var(--sage-dark);
+}
+.activity-choice input[type="date"] {
+    padding: 7px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font: inherit;
+}
+.booking-summary {
+    display: grid;
+    gap: 10px;
+    background: var(--jungle);
+    color: #fff;
+}
+.booking-summary .section-label {
+    color: var(--amber-light);
+}
+.booking-summary p, .booking-summary small {
+    color: var(--sage);
+}
+.form-errors {
+    padding: 12px 14px;
+    background: #fff0ed;
+    color: #9c2d1b;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+}
+.form-errors p + p {
+    margin-top: 4px;
+}
+.reservations-wrap {
+    padding: 28px 32px 36px;
+    display: grid;
+    gap: 16px;
+    max-width: 960px;
+}
+.reservation-card {
+    padding: 22px;
+    display: grid;
+    gap: 12px;
+}
+.reservation-card__head {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+.reservation-card__head p {
+    color: var(--sage-dark);
+    margin-top: 3px;
+}
+.status {
+    height: fit-content;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--amber-light);
+}
+.status.confirmada {
+    background: #cfe9d7;
+    color: var(--jungle);
+}
+.status.cancelada {
+    background: #f5d3cc;
+    color: #9c2d1b;
+}
+.included {
+    display: grid;
+    gap: 5px;
+    padding: 12px;
+    background: var(--sand);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+}
+.success-note {
+    padding: 12px 14px;
+    background: #dcefe1;
+    color: var(--jungle);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+.empty-state {
+    padding: 30px;
+    display: grid;
+    gap: 12px;
+    justify-items: start;
+}
+.profile-wrap {
+    margin: 28px 32px;
+    max-width: 620px;
+    display: grid;
+    gap: 16px;
+}
+.profile-wrap form {
+    display: grid;
+    gap: 16px;
+}
+.account-meta {
+    font-size: 13px;
+    color: var(--sage-dark);
+}
+@media (max-width: 720px) {
+    .booking-page, .reservations-wrap {
+        padding: 18px 16px 24px;
+    }
+    .section-pad, .activity-list, .profile-wrap {
+        margin: 18px 16px 24px;
+    }
+    .booking-page .section-pad {
+        margin: 0;
+    }
+    .hotel-detail, .booking-layout {
+        grid-template-columns: 1fr;
+    }
+    .hotel-detail > img {
+        min-height: 220px;
+    }
+    .hotel-detail > div, .reservation-form, .booking-summary {
+        padding: 20px;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .activity-choice {
+        grid-template-columns: auto 1fr;
+    }
+    .activity-choice input[type="date"] {
+        grid-column: 2;
+    }
+    .reservation-card__head {
+        flex-direction: column;
+    }
+}

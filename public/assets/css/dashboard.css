@@ -16,7 +16,9 @@
   flex-direction: column;
   gap: 8px;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
 }
 
 .stat-card:hover {
@@ -58,7 +60,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background-image: url('https://images.unsplash.com/photo-1580259679654-9276b39fd2d5?w=900&h=500&fit=crop&auto=format');
+  background-image: url("https://images.unsplash.com/photo-1580259679654-9276b39fd2d5?w=900&h=500&fit=crop&auto=format");
   background-size: cover;
   background-position: center;
 }
@@ -103,7 +105,7 @@
   max-width: 620px;
 }
 
-.featured-destination button {
+.dashboard-button {
   position: relative;
   z-index: 1;
   align-self: flex-start;
@@ -119,16 +121,18 @@
   font-weight: 600;
   border: none;
   border-radius: var(--radius);
-  cursor: pointer;
-  transition: opacity 0.15s, transform 0.15s;
+  text-decoration: none;
+  transition:
+    opacity 0.15s,
+    transform 0.15s;
 }
 
-.featured-destination button::after {
+.dashboard-button::after {
   content: ">";
   font-size: 12px;
 }
 
-.featured-destination button:hover {
+.dashboard-button:hover {
   opacity: 0.9;
   transform: translateY(-1px);
 }
@@ -158,6 +162,7 @@
   padding: 14px 20px;
   border-bottom: 1px solid var(--border);
   transition: background 0.15s;
+  text-decoration: none;
 }
 
 .reservation-item:last-child {
@@ -187,7 +192,7 @@
   color: var(--forest);
 }
 
-.reservation-item > span {
+.reservation-state {
   display: inline-block;
   flex-shrink: 0;
   padding: 3px 10px;
@@ -196,6 +201,28 @@
   font-weight: 600;
   background: #fef3e2;
   color: #92400e;
+}
+
+.reservation-state.confirmada {
+  background: #cfe9d7;
+  color: var(--jungle);
+}
+.reservation-state.cancelada {
+  background: #f5d3cc;
+  color: #9c2d1b;
+}
+.destination-meta {
+  color: var(--amber-light) !important;
+  font-weight: 600;
+}
+.dashboard-reservations-empty,
+.dashboard-empty {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+}
+.dashboard-empty {
+  align-content: center;
 }
 
 @media (max-width: 1024px) {
@@ -237,7 +264,7 @@
     padding: 24px 22px 0;
   }
 
-  .featured-destination button {
+  .dashboard-button {
     margin: 0 22px 24px;
   }
 

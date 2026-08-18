@@ -1,8 +1,6 @@
 <?php
 
-use Dom\Document;
-
-require_once __DIR__ . '/../core/Database.php';
+require_once __DIR__ . '/../core/DataBase.php';
 
 class User
 {
@@ -29,6 +27,30 @@ class User
         $stmt->execute(['email' => $email]);
 
         return $stmt->fetch() !== false;
+    }
+
+    public static function findById(int $id): ?array
+    {
+        $pdo = DataBase::getConnection();
+        $stmt = $pdo->prepare("SELECT id, nombre, email, role, created_at FROM usuarios WHERE id = :id AND deleted_at IS NULL");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch() ?: null;
+    }
+
+    public static function updateProfile(int $id, string $nombre, string $email): array
+    {
+        $pdo = DataBase::getConnection();
+        $exists = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email AND id != :id");
+        $exists->execute(['email' => $email, 'id' => $id]);
+        if ($exists->fetch()) return ['success' => false, 'error' => 'Ese correo ya está en uso.'];
+        try {
+            $stmt = $pdo->prepare("UPDATE usuarios SET nombre = :nombre, email = :email WHERE id = :id AND deleted_at IS NULL");
+            $stmt->execute(compact('id', 'nombre', 'email'));
+            return ['success' => true];
+        } catch (PDOException $e) {
+            error_log('Error en User::updateProfile: ' . $e->getMessage());
+            return ['success' => false, 'error' => 'No se pudo actualizar el perfil.'];
+        }
     }
 
     // Funciones de usuario
@@ -59,7 +81,7 @@ class User
 
     public static function attemptLogin(string $email, string $password): array
     {
-        if (!Security::checkRateLimit('login', 5, 300,)) {
+        if (!Security::checkRateLimit('login', 5, 300)) {
             return ['success' => false, 'error' => 'Demasiados intentos. Intente nuevamente en unos minutos.'];
         }
 
@@ -75,7 +97,7 @@ class User
         ) {
             return [
                 'success' => false,
-                'error' => 'Cuenta bloqueada temporalmente por intentos fallidos. Intente en' . self::BLOCK_MINS . 'minutos.'
+                'error' => 'Cuenta bloqueada temporalmente por intentos fallidos. Intente en ' . self::BLOCK_MINS . ' minutos.'
             ];
         }
 

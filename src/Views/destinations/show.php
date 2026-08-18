@@ -5,6 +5,7 @@ $image = destinationImage($destination['nombre'] ?? '');
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@ $image = destinationImage($destination['nombre'] ?? '');
     <link rel="stylesheet" href="/assets/css/global.css">
     <link rel="stylesheet" href="/assets/css/destinations.css">
 </head>
+
 <body>
     <?php include __DIR__ . '/../../layouts/sidebar.php'; ?>
 
@@ -20,8 +22,7 @@ $image = destinationImage($destination['nombre'] ?? '');
             <div class="hero-banner">
                 <img
                     src="/assets/images/destinations/<?= rawurlencode($image) ?>"
-                    alt="Paisaje de <?= htmlspecialchars($destination['nombre'] ?? '') ?>"
-                >
+                    alt="Paisaje de <?= htmlspecialchars($destination['nombre'] ?? '') ?>">
 
                 <div class="hero-overlay">
                     <h1><?= htmlspecialchars($destination['nombre'] ?? '') ?></h1>
@@ -68,5 +69,7 @@ $image = destinationImage($destination['nombre'] ?? '');
             </section>
         </div>
     </main>
+    </div><!-- .dashboard-container -->
 </body>
+
 </html>

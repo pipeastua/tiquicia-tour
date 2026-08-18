@@ -13,4 +13,16 @@ class HotelController
 
         include __DIR__ . '/../Views/hotels/index.php';
     }
+
+    public function show()
+    {
+        $hotel = Hotel::findById((int) ($_GET['id'] ?? 0));
+        if (!$hotel) {
+            header('Location: /hotel');
+            exit;
+        }
+        $activities = Hotel::getActivities((int) $hotel['id']);
+
+        include __DIR__ . '/../Views/hotels/show.php';
+    }
 }

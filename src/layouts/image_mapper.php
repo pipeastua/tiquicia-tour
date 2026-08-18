@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Devuelve el archivo local asignado a un destino.
- * Actualiza estas rutas cuando se reemplace una imagen.
- */
 function destinationImage(string $name): string
 {
     $images = [
@@ -17,10 +13,6 @@ function destinationImage(string $name): string
     return $images[$name] ?? '';
 }
 
-/**
- * Devuelve el archivo local asignado a un hotel.
- * Actualiza estas rutas cuando se reemplace una imagen.
- */
 function hotelImage(string $name): string
 {
     $images = [

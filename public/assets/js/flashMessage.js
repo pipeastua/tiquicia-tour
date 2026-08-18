@@ -1,3 +1,4 @@
+// Muestra los mensajes preparados por PHP mediante Toastify.
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof Toastify === 'undefined') {
         return;
@@ -18,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
             style: {
                 background: backgroundColor,
                 borderRadius: '8px',
-                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)'
-            }
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
+            },
         }).showToast();
     });
 });
