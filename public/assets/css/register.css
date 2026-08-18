@@ -27,7 +27,6 @@ button, a {
     justify-content: center;
     padding: 32px;
     background: var(--sand);
-    overflow-y: auto;
 }
 
 .register-form-inner {
